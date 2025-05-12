@@ -11,7 +11,6 @@
 
 void InitSearchLoop(int SearchsAmount, int TimePerSearch) {
 
-    cout << "Searching... " << " TIME: " << TimePerSearch << " Search Aumount: " << SearchsAmount;
 
     for (int i = 0; i < SearchsAmount; i++)
     {
@@ -38,51 +37,52 @@ void InitSearchLoop(int SearchsAmount, int TimePerSearch) {
 
 int main(int argc, char* argvs[]) {
 
-    // Pause to Open the Browser 
-    
-    Sleep(2000);
-
-
+ 
     // Setting default vars
 
     int SearchesAmount = 50;
 
     int TimePerSearch = 5000;
 
+    bool FileLoad = false;
+
     //Checking Args Loop
-    
+
     for (int i = 1; i < argc; i++)
     {
 
         if (strcmp(argvs[i], "-p") == 0) {
 
-            if (i + 1 < argc)
+            
+            if (i++ < argc)
             {
-                string str(argvs[i + 1]);
+                string str(argvs[i]);
 
                 GetSearchesOfFile(str);
 
+                FileLoad = true;
+                
                 continue;
             }
         }
 
         if (strcmp(argvs[i], "-m") == 0) {
 
-            if (i + 1 < argc)
+            if (i++ < argc)
             {
-                
-                SearchesAmount = atoi(argvs[i + 1]);
-                
+
+                SearchesAmount = atoi(argvs[i]);
+
                 continue;
             }
         }
 
         if (strcmp(argvs[i], "-t") == 0) {
 
-            if (i + 1 < argc)
+            if (i++ < argc)
             {
 
-                TimePerSearch = atoi(argvs[i + 1]);
+                TimePerSearch = atoi(argvs[i]);
 
                 continue;
             }
@@ -91,19 +91,25 @@ int main(int argc, char* argvs[]) {
 
     }
 
-    if (argc == 1) {
+    if (FileLoad == false) {
 
         GetSearchesOfFile();
 
     }
 
+    
+    cout << "Starting searches, please open your browser... " << " TIME: " << TimePerSearch << " Search Aumount: " << SearchesAmount; 
+    // Pause to Open the Browser 
+    Sleep(3000);
+
+    
     //Init Search Loop
 
     InitSearchLoop(SearchesAmount, TimePerSearch);
 
-    
+
     return 0;
-    
+
 }
 
 

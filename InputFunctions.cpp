@@ -52,7 +52,7 @@ void FocusOnSearchBar(){
     inputs[3].ki.wVk = VK_CONTROL;
     inputs[3].ki.dwFlags = KEYEVENTF_KEYUP;
     
-    SendInput(ARRAYSIZE(inputs), inputs, sizeof(INPUT));
+    SendInput(4, inputs, sizeof(INPUT));
 
 }
 
@@ -73,7 +73,7 @@ void WriteSearch(const string& texto) {
         inputs[1].ki.wScan = letra;
         inputs[1].ki.dwFlags = KEYEVENTF_UNICODE | KEYEVENTF_KEYUP;
 
-        SendInput(ARRAYSIZE(inputs), inputs, sizeof(INPUT));
+        SendInput(2, inputs, sizeof(INPUT));
 
         /* Lil PAUSE BETWEEN EACH LETTER --> */ Sleep(50);
         

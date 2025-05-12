@@ -3,15 +3,14 @@
 vector<string> SearchVector;
 
 
-
 bool GetSearchesOfFile(const string& Path){
     
     ifstream FILE(Path);
-    
-    if (!FILE){
 
-        cerr << "Fail to load txt at " << Path;
-    
+    if (!FILE) {
+
+        cerr << "Fail to load txt at (" << Path << ")\n";
+
         return 0;
     }
 
@@ -21,13 +20,14 @@ bool GetSearchesOfFile(const string& Path){
     string Search;
 
 
-    while (getline(FILE,Search))
-    {	
-	if(!Search.empty()){
-        	SearchVector.push_back(Search);
-	}
+    while (getline(FILE, Search))
+    {
+        if (!Search.empty()) {
+
+            SearchVector.push_back(Search);
+        }
     }
-    
+
     return 1;
 }
 
